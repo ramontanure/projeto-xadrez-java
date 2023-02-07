@@ -27,6 +27,14 @@ public class ChessMatch {
 		return mat;
 	}
 	
+	public boolean[][] possibleMoves(ChessPosition sourcePosition) {
+		//Convertendo a posição de xadrez para posição normal 
+		Position position = sourcePosition.toPosition();
+		validateSourcePosition(position);
+		
+		return board.piece(position).possibleMoves();
+	}
+	
 	public ChessPiece performChessMove(ChessPosition sourcePosition, ChessPosition targetPosition) {
 		Position source = sourcePosition.toPosition();
 		Position target = targetPosition.toPosition();
@@ -52,7 +60,7 @@ public class ChessMatch {
 			throw new ChessException("There is no piece on source position");
 		}
 		
-		if(!board.piece(position).isThereAnyPossibleMovie()) {
+		if(!board.piece(position).isThereAnyPossibleMove()) {
 			throw new ChessException("There is no possible moves for the chosen piece");
 		}
 	}

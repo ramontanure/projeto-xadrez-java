@@ -14,6 +14,7 @@ public class Program {
 
 		Scanner sc = new Scanner(System.in);
 
+		//Iniciando a partida de xadrez
 		ChessMatch chessMatch = new ChessMatch();
 
 		while (true) {
@@ -24,6 +25,10 @@ public class Program {
 				System.out.println();
 				System.out.print("Source: ");
 				ChessPosition source = UI.readChessPosition(sc);
+				
+				boolean[][] possibleMoves = chessMatch.possibleMoves(source);
+				UI.clearScreen();
+				UI.printBoard(chessMatch.getPieces(), possibleMoves);
 
 				System.out.println();
 				System.out.print("Target: ");
